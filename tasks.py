@@ -19,6 +19,32 @@ idf_db_conf = DatabaseConfig(
 )
 upload_dir = "content"
 
+import json
+import re
+
+# def match_tags_for_text(text: str, tag_weights: dict) -> list:
+#     if not text:
+#         return []
+#     text_l = text.lower()
+#     matched = []
+#     for tag in tag_weights.keys():
+#         pattern = r'\b' + re.escape(tag.lower()) + r'\b'
+#         if re.search(pattern, text_l):
+#             matched.append(tag)
+#     return matched
+
+# def annotate_transactions_with_tags(cur, tag_weights, request_id, statement_id):
+#     cur.execute("SELECT * FROM `transactions` WHERE request_id=%s AND statement_id=%s",
+#                 (request_id, statement_id))
+#     rows = cur.fetchall()
+#     for row in rows:
+#         # cursor returns dicts (see dbcon.py), adapt if your cursor returns tuples
+#         text = ' '.join(filter(None, [str(row.get('details') or ''), str(row.get('transaction_code') or '')]))
+#         tags = match_tags_for_text(text, tag_weights)
+#         tags_json = json.dumps(tags, ensure_ascii=False)
+#         cur.execute("UPDATE `transactions` SET `tags`=%s WHERE id=%s", (tags_json, row.get('id')))
+
+
 
 def get_fiscal_year(date_str):
     # date_str expected in YYYY-MM-DD format
@@ -161,6 +187,7 @@ def process_request(req:Request):
                                 %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)''',
                                 (request_id,s_id,pdf_name,bank_name,acc_no,acc_type,fiscal_year,total_debit,total_credit,credit_interest,source_tax,yearend_balance,total_cash,total_transfer,total_cheque,total_others)
                                 )
+    
     cur.execute("UPDATE `requests` SET `status`='Done' WHERE id = %s", (req.request_id,))
     db.commit()
 
