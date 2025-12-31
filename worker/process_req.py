@@ -70,6 +70,8 @@ def process_request(req:Request):
 
     cur = db.cursor
     try:
+        cur.execute("UPDATE `requests` SET `status`='processing' WHERE id = %s", (req.request_id,))
+        db.commit()
         
         for statement in req.statements:
             st_path = statement[0]

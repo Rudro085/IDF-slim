@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 72.61.229.43:3307
--- Generation Time: Dec 27, 2025 at 03:00 PM
+-- Generation Time: Dec 31, 2025 at 03:36 PM
 -- Server version: 9.5.0
 -- PHP Version: 8.3.26
 
@@ -33,8 +33,8 @@ CREATE TABLE `requests` (
   `taxpayer_name` text NOT NULL,
   `taxpayer_tin` text NOT NULL,
   `status` text NOT NULL,
-  `date_time` datetime NOT NULL,
-  `msg` text
+  `msg` text,
+  `date_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -53,7 +53,6 @@ CREATE TABLE `statements` (
   `opening_balance` float DEFAULT NULL,
   `closing_balance` float DEFAULT NULL,
   `tags` text,
-  `msg` text,
   `from_year` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `to_year` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -103,7 +102,10 @@ CREATE TABLE `transactions` (
   `debit` text NOT NULL,
   `credit` text NOT NULL,
   `balance` text NOT NULL,
-  `tags` text
+  `tags` text,
+  `Cat_L1` int DEFAULT NULL,
+  `Cat_L2` int DEFAULT NULL,
+  `Cat_L3` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -142,25 +144,25 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT for table `statements`
 --
 ALTER TABLE `statements`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
 
 --
 -- AUTO_INCREMENT for table `summery`
 --
 ALTER TABLE `summery`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=240;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40981;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41896;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
