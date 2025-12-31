@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7
+    container_name: idf-redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  api:
+    build: ./api
+    container_name: idf-api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    environment:
+      REDIS_HOST: "72.61.229.43"
+      HOST: "72.61.229.43"
+      DATABASE: "idf_db"
+      USER: "root"
+      PASS: "toor"
+      PORT: 3307
+    volumes:
+      - ./content:/app/content
+    restart: always
+
+  worker:
+    build: ./worker
+    container_name: idf-worker
+    environment:
+      REDIS_HOST: "72.61.229.43"
+      HOST: "72.61.229.43"
+      DATABASE: "idf_db"
+      USER: "root"
+      PASS: "toor"
+      PORT: 3307
+    volumes:
+      - ./content:/app/content
+    restart: always

@@ -8,8 +8,8 @@ from requests import Request
 import place_req
 
 
-UPLOAD_DIR = "uploaded_pdfs"
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+# UPLOAD_DIR = "uploaded_pdfs"
+# os.makedirs(UPLOAD_DIR, exist_ok=True)
 app = FastAPI()
 
 # Create Redis connection
