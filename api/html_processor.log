@@ -1,0 +1,8 @@
+2025-12-31 20:54:55,843 - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-12-31 20:55:28,083 - INFO - Connected to database 'idf_db' on 72.61.229.43:3307
+2025-12-31 20:55:28,387 - INFO - Transaction committed successfully
+2025-12-31 20:55:28,461 - INFO - Database connection closed
