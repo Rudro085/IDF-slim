@@ -99,7 +99,12 @@ def process_request(req:Request):
                                     data.result['type1'].value, data.result['type2'].value, data.result['type3'].value
                                 ))
             #convert dict to JSON string
-            tags = json.dumps(category.get_frequent_phrases(st), ensure_ascii=False)
+            tags = category.get_frequent_phrases(st)
+            for tag, count in tags.items():
+                cur.execute('''INSERT INTO `statement_tags`(`file_id`, `tag`, `count`) 
+                               VALUES (%s, %s, %s)''', (st_id, tag, count))
+            db.commit()
+            tags= json.dumps(tags, ensure_ascii=False)
             from_year = min(fiscal_year_set) - 1
             to_year = max(fiscal_year_set) + 1
             cur.execute('''UPDATE `statements` SET 
