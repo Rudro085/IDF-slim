@@ -9,14 +9,15 @@ from utils.banks import AvailableBanks
 import json
 from utils.enums import *
 from utils import category
+import os
 
 
 idf_db_conf = DatabaseConfig(
-    host='72.61.229.43',
-    database='idf_db',
-    user='root',
-    password='toor',
-    port=3307
+    host=os.getenv('HOST', '72.61.229.43'),
+    database=os.getenv('DATABASE', 'nbr'),
+    user=os.getenv('USER', 'nbr'),
+    password=os.getenv('PASS', 'nbr@123'),
+    port=os.getenv('PORT', 3306)
 )
 upload_dir = "content"
 
