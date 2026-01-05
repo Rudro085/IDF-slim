@@ -9,7 +9,7 @@ redis_conn = Redis(host=os.getenv('REDIS_HOST', '72.61.229.43'), port=6379, db=0
 queue = Queue('default', connection=redis_conn)
 
 idf_db_conf = DatabaseConfig(
-    host= os.getenv('REDIS_URL', '72.61.229.43'),
+    host= os.getenv('HOST', '72.61.229.43'),
     database=os.getenv('DATABASE', 'idf_db'),
     user=os.getenv('USER', 'root'),
     password=os.getenv('PASS', 'toor'),
