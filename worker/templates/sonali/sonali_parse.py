@@ -63,6 +63,7 @@ class Sonali_parser:
                         transaction = Transaction()
                         transaction.date = self._date_format(entry[1])
                         transaction.transaction_code = entry[3]
+                        transaction.details = entry[3]
                         transaction.debit = self._fig_format(entry[4])
                         transaction.credit = self._fig_format(entry[5])
                         transaction.balance = self._fig_format(entry[7])
