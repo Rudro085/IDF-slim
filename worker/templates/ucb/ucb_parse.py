@@ -87,8 +87,11 @@ class Ucb_parser:
                         statement.add(transaction)
 
                     elif line[0] == '':
-                        transaction.details = line[3]
-                        statement.data[-1].concatinate(transaction)
+                        try:
+                            transaction.details = line[3]
+                            statement.data[-1].concatinate(transaction)
+                        except:
+                            pass
         # Extract text
         page = doc[0]
         text = page.get_text()
